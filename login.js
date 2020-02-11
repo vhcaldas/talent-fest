@@ -79,6 +79,3 @@ const addToFirebase = () => {
     alert(errorString);
     });
     }; */
-
-
-
