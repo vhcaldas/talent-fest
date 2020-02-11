@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 .logo {
-  width: 30%;
+  width: 40%;
 }
 
 body {
@@ -15,6 +15,7 @@ body {
   background-attachment: fixed;
   background-size: 100%;
   font-family: 'Roboto', sans-serif;
+  color: #FFF;
 }
 
 .btn {
@@ -32,6 +33,7 @@ body {
   letter-spacing: 2px;
   padding: 10px 26px;
   font-family: 'Roboto', sans-serif;
+  margin: 10px;
 }
 
 .btn:hover {
@@ -44,4 +46,8 @@ body {
   width: 20%;
   height: 20%;
   background-color: #FFF;
+}
+
+#player {
+  margin-bottom: 20px;
 }
