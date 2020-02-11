@@ -1,27 +1,47 @@
-/* fluxo de captura da imagem */
-
+const btnLogin = document.getElementById('processImage');
 const btnCapture = document.getElementById('capture');
 const player = document.getElementById('player');
 const snapshotCanvas = document.getElementById('snapshot');
 let videoTracks;
 
+//GUARDAR ISSO
+const subscriptionKey = "a76225be0539425da6665eeb02a8973f";
 
-const handleSuccess = function (stream) {
-	player.srcObject = stream;
-	videoTracks = stream.getVideoTracks();
+btnLogin.addEventListener("click", function() {
+	firebase.firestore().collection('users').get().then(snap => snap.forEach(i => console.log(i.data().img.path)));
+})
 
-};
-navigator.mediaDevices.getUserMedia({ video: true })
-	.then(handleSuccess);
+/* fluxo de captura da imagem */
 
 btnCapture.addEventListener("click", function () {
 	const context = snapshot.getContext('2d');
 	// Draw the video frame to the canvas.
 	context.drawImage(player, 0, 0, snapshotCanvas.width,
-		snapshotCanvas.height);
-	videoTracks.forEach(function(track) {track.stop()});
+		snapshotCanvas.height)
+
+	const canvas = snapshotCanvas.toDataURL('image/jpeg');
+
+	const fbStorage = firebase.storage().ref();
+	const child = fbStorage.child('users/'+Math.random()+'.png')
+	// console.log(canvas)
+	const img = canvas.replace('data:image/jpeg;base64,/', '')
+
+	// console.log(canvas)
+	child.putString(canvas, 'data_url').then(snap => console.log('funcionou'))
+	
+	//videoTracks.forEach(function(track) {track.stop()});
+
 
 });
+
+const handleSuccess = function (stream) {
+	player.srcObject = stream;
+	videoTracks = stream.getVideoTracks();
+};
+
+navigator.mediaDevices.getUserMedia({ video: true })
+	.then(handleSuccess);
+
 
 const addToFirebase = () => {
 	console.log('deu certo!')
@@ -79,3 +99,6 @@ const addToFirebase = () => {
     alert(errorString);
     });
     }; */
+
+
+
