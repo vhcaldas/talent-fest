@@ -1,0 +1,19 @@
+{
+  "name": "talent-fest",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "serve src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-v-s/talent-fest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e-v-s/talent-fest/issues"
+  },
+  "homepage": "https://github.com/e-v-s/talent-fest#readme"
+}
