@@ -3,8 +3,6 @@ const btnCapture = document.getElementById('capture');
 const player = document.getElementById('player');
 const snapshotCanvas = document.getElementById('snapshot');
 let videoTracks;
-
-//GUARDAR ISSO
 const subscriptionKey = "a76225be0539425da6665eeb02a8973f";
 
 btnLogin.addEventListener("click", function() {
@@ -15,23 +13,17 @@ btnLogin.addEventListener("click", function() {
 
 btnCapture.addEventListener("click", function () {
 	const context = snapshot.getContext('2d');
-	// Draw the video frame to the canvas.
+	const canvas = snapshotCanvas.toDataURL('image/jpeg');
+	const fbStorage = firebase.storage().ref();
+	const child = fbStorage.child('users/'+Math.random()+'.png')
+	const img = canvas.replace('data:image/jpeg;base64,/', '')
+
 	context.drawImage(player, 0, 0, snapshotCanvas.width,
 		snapshotCanvas.height)
 
-	const canvas = snapshotCanvas.toDataURL('image/jpeg');
-
-	const fbStorage = firebase.storage().ref();
-	const child = fbStorage.child('users/'+Math.random()+'.png')
-	// console.log(canvas)
-	const img = canvas.replace('data:image/jpeg;base64,/', '')
-
-	// console.log(canvas)
 	child.putString(canvas, 'data_url').then(snap => console.log('funcionou'))
 	
 	//videoTracks.forEach(function(track) {track.stop()});
-
-
 });
 
 const handleSuccess = function (stream) {
@@ -42,10 +34,6 @@ const handleSuccess = function (stream) {
 navigator.mediaDevices.getUserMedia({ video: true })
 	.then(handleSuccess);
 
-
-const addToFirebase = () => {
-	console.log('deu certo!')
-}
 
 /* function processImage() {
   // Replace <Subscription Key> with your valid subscription key.
@@ -99,6 +87,3 @@ const addToFirebase = () => {
     alert(errorString);
     });
     }; */
-
-
-
