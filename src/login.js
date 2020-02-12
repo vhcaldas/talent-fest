@@ -13,22 +13,26 @@ btnLogin.addEventListener("click", function () {
 /* fluxo de captura da imagem */
 
 btnCapture.addEventListener("click", function () {
-    const context = snapshot.getContext('2d');
-    const canvas = snapshotCanvas.toDataURL('image/jpeg');
-    const fbStorage = firebase.storage().ref();
-    const child = fbStorage.child('users/' + Math.random() + '.png');
-    const img = canvas.replace('data:image/jpeg;base64,/', '');
+	const context = snapshot.getContext('2d');
+	// const gl = snapshotCanvas.getContext('webgl', {preserveDrawingBuffer: true})
+	context.drawImage(player, 0, 0, snapshotCanvas.width,
+		snapshotCanvas.height)
+	const canvas = snapshotCanvas.toDataURL();
+	//const pictureName = (`${new Date()}.png`);
+	const fbStorage = firebase.storage().ref();
+	const child = fbStorage.child('users/'+(new Date())+'.png')
 
-    context.drawImage(player, 0, 0, snapshotCanvas.width,
-        snapshotCanvas.height)
-
-    child.putString(canvas, 'data_url')
-        .then(snap => detectFace())
+	child.putString(canvas, 'data_url').then(snap => getImageFromFirebase(child))	
+	//videoTracks.forEach(function(track) {track.stop()});
 });
 
+const getImageFromFirebase = (img) => {
+	img.getDownloadURL().then(url => console.log(url))
+}
+
 const handleSuccess = function (stream) {
-    player.srcObject = stream;
-    videoTracks = stream.getVideoTracks();
+	player.srcObject = stream;
+	//videoTracks = stream.getVideoTracks();
 };
 
 navigator.mediaDevices.getUserMedia({ video: true })
