@@ -4,7 +4,6 @@ const player = document.getElementById('player');
 const snapshotCanvas = document.getElementById('snapshot');
 let videoTracks;
 const subscriptionKey = "a76225be0539425da6665eeb02a8973f";
-const showInfoImage = document.getElementById("jsonOutput");
 
 btnCapture.addEventListener("click", function () {
     const context = snapshot.getContext('2d');
@@ -41,7 +40,10 @@ function detectFace(url) {
     $.ajax(settings).done(function (response) {
         identifyImage(response);
     }).fail(function () {
-        alert("error");
+        document.getElementById("camera").innerHTML = "Usuárix não Cadastradx."
+        setTimeout(() => {
+            window.location.reload()
+        }, 3000);
     });
 };
 
@@ -64,11 +66,17 @@ function identifyImage(response) {
     fetch("https://laboratoriaface.cognitiveservices.azure.com/face/v1.0/identify", requestOptions)
         .then(response => response.text())
         .then(result => getName(result))
-        .catch(error => console.log('error', error));
+        .catch(function () {
+            document.getElementById("camera").innerHTML = "Usuárix não Cadastradx."
+            setTimeout(() => {
+                window.location.reload()
+            }, 3000);
+        }
+        );
 };
 
 function getName(result) {
-    
+
     const findData = JSON.parse(result);
     const findPersonId = findData[0].candidates[0].personId;
     const settings = {
@@ -83,9 +91,17 @@ function getName(result) {
             "{body}": ""
         }
     };
-
     $.ajax(settings).done(function (response) {
-        console.log(response);
-    }).fail(error => console.log(error));
+        const findName = response.name
+        document.getElementById('camera').innerHTML = "Bem vindx, " + `${findName}` + "! Você está logadx."
+    }).fail(
+        function () {
+            document.getElementById("camera").innerHTML = "Usuárix não Cadastradx."
+            setTimeout(() => {
+                window.location.reload()
+            }, 3000);
+        }
+    );
 }
+
 
