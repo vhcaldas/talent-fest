@@ -10,21 +10,18 @@ btnLogin.addEventListener("click", function () {
     firebase.firestore().collection('users').get().then(snap => snap.forEach(i => console.log(i.data().img.path)));
 })
 
-/* fluxo de captura da imagem */
-
-
 btnCapture.addEventListener("click", function () {
     const context = snapshot.getContext('2d');
-    // const gl = snapshotCanvas.getContext('webgl', {preserveDrawingBuffer: true})
+
     context.drawImage(player, 0, 0, snapshotCanvas.width,
         snapshotCanvas.height)
     const canvas = snapshotCanvas.toDataURL();
-    //const pictureName = (`${new Date()}.png`);
+
     const fbStorage = firebase.storage().ref();
     const child = fbStorage.child('users/' + (new Date()) + '.png')
 
     child.putString(canvas, 'data_url').then(snap => getImageFromFirebase(child))
-    //videoTracks.forEach(function(track) {track.stop()});
+
 });
 
 const getImageFromFirebase = (img) => {
@@ -33,7 +30,6 @@ const getImageFromFirebase = (img) => {
 
 const handleSuccess = function (stream) {
     player.srcObject = stream;
-    //videoTracks = stream.getVideoTracks();
 };
 
 navigator.mediaDevices.getUserMedia({ video: true })
