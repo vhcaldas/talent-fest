@@ -1,4 +1,4 @@
-const btnLogin = document.getElementById('processImage');
+// const btnLogin = document.getElementById('processImage');
 const btnCapture = document.getElementById('capture');
 const player = document.getElementById('player');
 const snapshotCanvas = document.getElementById('snapshot');
@@ -6,14 +6,9 @@ let videoTracks;
 const subscriptionKey = "a76225be0539425da6665eeb02a8973f";
 const showInfoImage = document.getElementById("jsonOutput");
 
-btnLogin.addEventListener("click", function () {
-    firebase.firestore().collection('users').get().then(snap => snap.forEach(i => console.log(i.data().img.path)));
-})
-
 /* fluxo de captura da imagem */
-
-
 btnCapture.addEventListener("click", function () {
+    firebase.firestore().collection('users').get().then(snap => snap.forEach(i => console.log(i.data().img.path)));
     const context = snapshot.getContext('2d');
     // const gl = snapshotCanvas.getContext('webgl', {preserveDrawingBuffer: true})
     context.drawImage(player, 0, 0, snapshotCanvas.width,
