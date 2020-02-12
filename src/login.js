@@ -12,8 +12,8 @@ btnLogin.addEventListener("click", function () {
 
 /* fluxo de captura da imagem */
 
-btnCapture.addEventListener("click", function () {
 
+btnCapture.addEventListener("click", function () {
 	const context = snapshot.getContext('2d');
 	// const gl = snapshotCanvas.getContext('webgl', {preserveDrawingBuffer: true})
 	context.drawImage(player, 0, 0, snapshotCanvas.width,
@@ -32,7 +32,6 @@ const getImageFromFirebase = (img) => {
 }
 
 const handleSuccess = function (stream) {
-
 	player.srcObject = stream;
 	//videoTracks = stream.getVideoTracks();
 };
