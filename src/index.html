@@ -11,13 +11,14 @@
   <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
 </head>
 <body>
-  <img src="./images/avanade-white.png" class="logo">
-  <button class="btn" id="processImage">Login</button>
+  <img src="./images/avanade-white.png" class="logo">  
+<div class="camera" id="camera">
   <h2>Faça o seu login:</h2>
     <video id="player" controls autoplay></video>
-    <button class="btn" type="button" id="capture">Capturar</button>
+    <button class="btn" type="button" id="capture">Login</button>
     <canvas id="snapshot" width=320 height=240></canvas>
-  <div id="wrapper" style="width:1020px; display:table;">
+</div>
+  <div id="wrapper">
     <div id="jsonOutput" style="width:600px; display:table-cell;"></div>
   </div>
     <script type="text/javascript" src="./login.js"></script>
