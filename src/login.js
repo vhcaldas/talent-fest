@@ -4,6 +4,7 @@ const player = document.getElementById('player');
 const snapshotCanvas = document.getElementById('snapshot');
 let videoTracks;
 const subscriptionKey = "a76225be0539425da6665eeb02a8973f";
+const showInfoImage = document.getElementById(jsonOutput);
 
 btnLogin.addEventListener("click", function() {
 	firebase.firestore().collection('users').get().then(snap => snap.forEach(i => console.log(i.data().img.path)));
@@ -21,7 +22,8 @@ btnCapture.addEventListener("click", function () {
 	context.drawImage(player, 0, 0, snapshotCanvas.width,
 		snapshotCanvas.height)
 
-	child.putString(canvas, 'data_url').then(snap => console.log('funcionou'))
+  child.putString(canvas, 'data_url')
+    .then(snap => detectFace(snap))
 	
 	//videoTracks.forEach(function(track) {track.stop()});
 });
@@ -34,6 +36,34 @@ const handleSuccess = function (stream) {
 navigator.mediaDevices.getUserMedia({ video: true })
 	.then(handleSuccess);
 
+  function detectFace () {
+    const params = {
+        "returnFaceId": "true",
+        "returnFaceLandmarks": "false",
+        "returnFaceAttributes": "string",
+        "recognitionModel": "recognition_02",
+        "returnRecognitionModel": "false",
+        "detectionModel": "detection_02",
+    };
+  
+    $.ajax({
+        url: "https://laboratoriaface.cognitiveservices.azure.com/face/v1.0/detect?" + $.param(params),
+        beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","a76225be0539425da6665eeb02a8973f");
+        },
+        type: "POST",
+        // Request body
+        data: {showInfoImage},
+    })
+    .done(function(data) {
+        console.log("success");
+    })
+    .fail(function() {
+        alert("error");
+    });
+};
 
 /* function processImage() {
   // Replace <Subscription Key> with your valid subscription key.
