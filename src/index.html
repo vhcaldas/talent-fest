@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,29 +11,30 @@
   <script src="/__/firebase/7.1.0/firebase-storage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
 </head>
+
 <body>
-  <img src="./images/avanade-white.png" class="logo">  
-<div class="camera" id="camera">
-  <h2>Faça o seu login:</h2>
-    <video id="player" controls autoplay></video>
+  <img src="./images/avanade-white.png" class="logo">
+  <div class="camera" id="camera">
+    <h2>Faça o seu login:</h2>
+    <video id="player" class= "player" controls autoplay></video>
     <button class="btn" type="button" id="capture">Login</button>
-    <canvas id="snapshot" width=320 height=240></canvas>
-</div>
-  <div id="wrapper">
-    <div id="jsonOutput" style="width:600px; display:table-cell;"></div>
   </div>
-    <script type="text/javascript" src="./login.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBG09B0y8a5pxzqq0z_AQCwPu7imhuRF1g",
-        authDomain: "talent-fest-2020.firebaseapp.com",
-        databaseURL: "https://talent-fest-2020.firebaseio.com",
-        projectId: "talent-fest-2020",
-        storageBucket: "talent-fest-2020.appspot.com",
-        messagingSenderId: "835808205023",
-        appId: "1:835808205023:web:3802001a9eef158762716a"
-      };
-      firebase.initializeApp(firebaseConfig);
-    </script>
-  </body>
+  <aside class= "img-response">
+    <canvas id="snapshot" width=320 height=240></canvas>
+  </aside>
+  <script type="text/javascript" src="./login.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBG09B0y8a5pxzqq0z_AQCwPu7imhuRF1g",
+      authDomain: "talent-fest-2020.firebaseapp.com",
+      databaseURL: "https://talent-fest-2020.firebaseio.com",
+      projectId: "talent-fest-2020",
+      storageBucket: "talent-fest-2020.appspot.com",
+      messagingSenderId: "835808205023",
+      appId: "1:835808205023:web:3802001a9eef158762716a"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</body>
+
 </html>

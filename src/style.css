@@ -51,9 +51,10 @@ button::-moz-focus-inner {
   outline:none;
 }
 
-#player {
+.player {
   margin-bottom: 20px;
   width: 60%;
+  border-radius: 2vw;
 }
 
 .login {
@@ -66,4 +67,8 @@ button::-moz-focus-inner {
   align-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.img-response{
+  display: none;
 }
