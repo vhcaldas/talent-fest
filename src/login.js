@@ -12,6 +12,7 @@ btnLogin.addEventListener("click", function () {
 
 /* fluxo de captura da imagem */
 
+
 btnCapture.addEventListener("click", function () {
 	const context = snapshot.getContext('2d');
 	// const gl = snapshotCanvas.getContext('webgl', {preserveDrawingBuffer: true})
