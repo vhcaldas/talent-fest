@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/e-v-s/talent-fest.git"
+    "url": "git+https://github.com/vhcaldas/talent-fest.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/e-v-s/talent-fest/issues"
+    "url": "https://github.com/vhcaldas/talent-fest/issues"
   },
-  "homepage": "https://github.com/e-v-s/talent-fest#readme"
+  "homepage": "https://github.com/vhcaldas/talent-fest#readme"
 }
