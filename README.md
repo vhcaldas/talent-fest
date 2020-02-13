@@ -30,13 +30,6 @@ Assim, foi proposto o desenvolvimento de um site/app de identificação e cadast
 3. Site/App com câmera 
 4. Reconhecimento facial com foto do site/app 
 
-### Desafios extras: 
-
-5. Cadastro de rostos via site/app 
-6. Base de personagens 
-7. Escolher personagens no cadastro 
-8. Exibir personagem no reconhecimento 
- 
 ## 3. Características Técnicas
 
 A API da Microsoft de Reconhecimento Facial é uma ótima ferramenta para a situação descrita e, portanto, o seu uso foi imprescindível. 
